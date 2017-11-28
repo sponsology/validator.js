@@ -1749,6 +1749,28 @@ describe('Validators', function () {
     });
   });
 
+  it('should validate percentages', function () {
+    test({
+      validator: 'isPercentage',
+      valid: [
+        '23',
+        '23.',
+        '23.123',
+        '+0.123',
+        '0.123',
+        '01.123',
+        '+.123',
+      ],
+      invalid: [
+        '100e10',
+        '123.123',
+        '-.123',
+        '   ',
+        '',
+      ],
+    });
+  });
+
   it('should validate floats', function () {
     test({
       validator: 'isFloat',
@@ -3078,7 +3100,7 @@ describe('Validators', function () {
       {
         locale: 'en-AU',
         valid: [
-          '61404111222',
+          '0291112222',
           '+61411222333',
           '0417123456',
         ],

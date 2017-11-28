@@ -224,6 +224,10 @@ var _isPostalCode = require('./lib/isPostalCode');
 
 var _isPostalCode2 = _interopRequireDefault(_isPostalCode);
 
+var _isPercentage = require('./lib/isPercentage');
+
+var _isPercentage2 = _interopRequireDefault(_isPercentage);
+
 var _ltrim = require('./lib/ltrim');
 
 var _ltrim2 = _interopRequireDefault(_ltrim);
@@ -329,6 +333,7 @@ var validator = {
   isBase64: _isBase2.default,
   isDataURI: _isDataURI2.default,
   isLatLong: _isLatLong2.default,
+  isPercentage: _isPercentage2.default,
   ltrim: _ltrim2.default,
   rtrim: _rtrim2.default,
   trim: _trim2.default,

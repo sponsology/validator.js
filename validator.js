@@ -970,7 +970,6 @@ var phones = {
   'da-DK': /^(\+?45)?\s?\d{2}\s?\d{2}\s?\d{2}\s?\d{2}$/,
   'de-DE': /^(\+?49[ \.\-])?([\(]{1}[0-9]{1,6}[\)])?([0-9 \.\-\/]{3,20})((x|ext|extension)[ ]?[0-9]{1,4})?$/,
   'el-GR': /^(\+?30)?(69\d{8})$/,
-  //'en-AU': /^(\+?61|0)4\d{8}$/,
   'en-AU': /^\({0,1}((0|\+61)(2|4|3|7|8)){0,1}\){0,1}(\ |-){0,1}[0-9]{2}(\ |-){0,1}[0-9]{2}(\ |-){0,1}[0-9]{1}(\ |-){0,1}[0-9]{3}$/,
   'en-GB': /^(\+?44|0)7\d{9}$/,
   'en-HK': /^(\+?852\-?)?[456789]\d{3}\-?\d{4}$/,
@@ -1226,6 +1225,17 @@ var isPostalCode = function (str, locale) {
   throw new Error('Invalid locale \'' + locale + '\'');
 };
 
+function isPercentage(str) {
+  assertString(str);
+  var x = parseFloat(str);
+
+  if (isNaN(x) || x < 0 || x > 100) {
+    return false;
+  }
+
+  return true;
+}
+
 function ltrim(str, chars) {
   assertString(str);
   var pattern = chars ? new RegExp('^[' + chars + ']+', 'g') : /^\s+/g;
@@ -1459,6 +1469,7 @@ var validator = {
   isBase64: isBase64,
   isDataURI: isDataURI,
   isLatLong: isLatLong,
+  isPercentage: isPercentage,
   ltrim: ltrim,
   rtrim: rtrim,
   trim: trim,
