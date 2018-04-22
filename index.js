@@ -56,6 +56,10 @@ var _isBoolean = require('./lib/isBoolean');
 
 var _isBoolean2 = _interopRequireDefault(_isBoolean);
 
+var _isABN = require('./lib/isABN');
+
+var _isABN2 = _interopRequireDefault(_isABN);
+
 var _isAlpha = require('./lib/isAlpha');
 
 var _isAlpha2 = _interopRequireDefault(_isAlpha);
@@ -291,6 +295,7 @@ var validator = {
   isIP: _isIP2.default,
   isFQDN: _isFQDN2.default,
   isBoolean: _isBoolean2.default,
+  isABN: _isABN2.default,
   isAlpha: _isAlpha2.default,
   isAlphanumeric: _isAlphanumeric2.default,
   isNumeric: _isNumeric2.default,

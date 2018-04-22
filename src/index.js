@@ -13,6 +13,7 @@ import isIP from './lib/isIP';
 import isFQDN from './lib/isFQDN';
 
 import isBoolean from './lib/isBoolean';
+import isABN from './lib/isABN';
 
 import isAlpha from './lib/isAlpha';
 import isAlphanumeric from './lib/isAlphanumeric';
@@ -107,6 +108,7 @@ const validator = {
   isIP,
   isFQDN,
   isBoolean,
+  isABN,
   isAlpha,
   isAlphanumeric,
   isNumeric,

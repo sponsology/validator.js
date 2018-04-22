@@ -1,9 +1,6 @@
-import assertString from './util/assertString';
-
 /* eslint-disable prefer-rest-params */
 export default function isLength(str, options) {
-  //assertString(str);
-  let str2 = ""+str;
+  let str2 = `${str}`;
   let min;
   let max;
   if (typeof (options) === 'object') {

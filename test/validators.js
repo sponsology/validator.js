@@ -4740,6 +4740,22 @@ describe('Validators', function () {
         'yes',
       ],
     });
+
+    test({
+      validator: 'isABN`',
+      valid: [
+        '32 188 422 455',
+        '61642992517',
+        '76 904 704 864 ',
+        '59690703215',
+      ],
+      invalid: [
+        'abc',
+        '123455888838833219',
+        '123456789',
+        '1b2b3b5b5n3k',
+      ],
+    });
   });
 
   it('should validate ISO 8601 dates', function () {

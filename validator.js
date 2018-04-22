@@ -434,6 +434,13 @@ function isBoolean(str) {
   return ['true', 'false', '1', '0'].indexOf(str) >= 0;
 }
 
+var validator$2 = require('au-bn-validator');
+
+function isABN(str) {
+  assertString(str);
+  return validator$2.validateABN(str);
+}
+
 var alpha = {
   'en-US': /^[A-Z]+$/i,
   'cs-CZ': /^[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]+$/i,
@@ -729,8 +736,7 @@ function isEmpty(str) {
 
 /* eslint-disable prefer-rest-params */
 function isLength(str, options) {
-  //assertString(str);
-  var str2 = "" + str;
+  var str2 = '' + str;
   var min = void 0;
   var max = void 0;
   if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object') {
@@ -1428,6 +1434,7 @@ var validator = {
   isIP: isIP,
   isFQDN: isFQDN,
   isBoolean: isBoolean,
+  isABN: isABN,
   isAlpha: isAlpha,
   isAlphanumeric: isAlphanumeric,
   isNumeric: isNumeric,
