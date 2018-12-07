@@ -50,13 +50,16 @@ export default function isURL(url, options) {
 
   split = url.split('://');
   if (split.length > 1) {
-    protocol = split.shift();
+    protocol = split.shift().toLowerCase();
     if (options.require_valid_protocol && options.protocols.indexOf(protocol) === -1) {
       return false;
     }
   } else if (options.require_protocol) {
     return false;
-  } else if (options.allow_protocol_relative_urls && url.substr(0, 2) === '//') {
+  } else if (url.substr(0, 2) === '//') {
+    if (!options.allow_protocol_relative_urls) {
+      return false;
+    }
     split[0] = url.substr(2);
   }
   url = split.join('://');
@@ -74,6 +77,9 @@ export default function isURL(url, options) {
 
   split = url.split('@');
   if (split.length > 1) {
+    if (options.disallow_auth) {
+      return false;
+    }
     auth = split.shift();
     if (auth.indexOf(':') >= 0 && auth.split(':').length > 2) {
       return false;
