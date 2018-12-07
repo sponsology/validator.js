@@ -2101,7 +2101,7 @@ describe('Validators', () => {
     });
   });
 
-  it('should validate percentages', function () {
+  it('should validate percentages', () => {
     test({
       validator: 'isPercentage',
       valid: [
@@ -2123,7 +2123,7 @@ describe('Validators', () => {
     });
   });
 
-  it('should validate floats', function () {
+  it('should validate floats', () => {
     test({
       validator: 'isFloat',
       valid: [
@@ -5615,22 +5615,6 @@ describe('Validators', () => {
         'yes',
       ],
     });
-
-    test({
-      validator: 'isABN`',
-      valid: [
-        '32 188 422 455',
-        '61642992517',
-        '76 904 704 864 ',
-        '59690703215',
-      ],
-      invalid: [
-        'abc',
-        '123455888838833219',
-        '123456789',
-        '1b2b3b5b5n3k',
-      ],
-    });
   });
 
   const validISO8601 = [
@@ -5703,6 +5687,24 @@ describe('Validators', () => {
     '2010-02-18T16,25:23:48,444',
     '2010-13-1',
   ];
+
+  it('should validate ABNs', () => {
+    test({
+      validator: 'isABN',
+      valid: [
+        '32 188 422 455',
+        '61642992517',
+        '76 904 704 864 ',
+        '59690703215',
+      ],
+      invalid: [
+        'abc',
+        '123455888838833219',
+        '123456789',
+        '1b2b3b5b5n3k',
+      ],
+    });
+  });
 
   it('should validate ISO 8601 dates', () => {
     // from http://www.pelagodesign.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
