@@ -362,6 +362,19 @@ describe('Validators', () => {
     });
   });
 
+  it('should validate blank URLs with allow_blank on', () => {
+    test({
+      validator: 'isURL',
+      args: [
+        {
+          allow_blank: true,
+        },
+      ],
+      valid: ['http://www.foobar.com', ''],
+      invalid: ['h'],
+    });
+  });
+
   it('should validate file URLs without a host', () => {
     test({
       validator: 'isURL',

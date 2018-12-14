@@ -591,7 +591,8 @@ var default_url_options = {
   require_valid_protocol: true,
   allow_underscores: false,
   allow_trailing_dot: false,
-  allow_protocol_relative_urls: false
+  allow_protocol_relative_urls: false,
+  allow_blank: false
 };
 var wrapped_ipv6 = /^\[([^\]]+)\](?::([0-9]+))?$/;
 
@@ -613,6 +614,11 @@ function checkHost(host, matches) {
 
 function isURL(url, options) {
   assertString(url);
+  options = merge(options, default_url_options);
+
+  if (url.length === 0 && options.allow_blank) {
+    return true;
+  }
 
   if (!url || url.length >= 2083 || /[\s<>]/.test(url)) {
     return false;
@@ -622,7 +628,6 @@ function isURL(url, options) {
     return false;
   }
 
-  options = merge(options, default_url_options);
   var protocol, auth, host, hostname, port, port_str, split, ipv6;
   split = url.split('#');
   url = split.shift();
