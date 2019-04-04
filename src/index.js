@@ -99,7 +99,7 @@ import normalizeEmail from './lib/normalizeEmail';
 
 import toString from './lib/util/toString';
 
-const version = '10.9.0';
+const version = '10.11.0';
 
 const validator = {
   version,
